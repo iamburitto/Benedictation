@@ -44,7 +44,7 @@
 <script>
 var comm = new Icecomm('9gv3ODZorBS2kVuNwnugBeV432PcNX3Qn0HmW33ofxK/u5Xolu');
 
-    comm.connect('awesomefuckingroom');
+    comm.connect(window.location.pathname);
 
     comm.on('local', function(options) {
       localVideo.src = options.stream;
@@ -68,16 +68,16 @@ var comm = new Icecomm('9gv3ODZorBS2kVuNwnugBeV432PcNX3Qn0HmW33ofxK/u5Xolu');
   comm.on('data',appendNewIM);
 
   // var user_name = prompt("Your user name?");
-  
+
   var $sendButton = $("#js-send-button-im");
   var $inputIM    = $("#js-input-im");
   var $chatBody   = $("#js-chat-body");
   var clientOptions;
-  
+
   $sendButton.on('click', sendIM);
   $inputIM.on('keypress', checkEnterKey);
-  
-  // send a message 
+
+  // send a message
   function sendIM() {
     var content = $inputIM.val();
     $inputIM.val("");
@@ -94,13 +94,13 @@ var comm = new Icecomm('9gv3ODZorBS2kVuNwnugBeV432PcNX3Qn0HmW33ofxK/u5Xolu');
       $sendButton.click();
     }
   }
-  
+
   // stick new instant message onto the chat body
   function appendNewIM(options) {
     console.log("attempting to append");
     $chatBody.prepend(mediaObjectIM(options.callerID, options.data));
   }
-  
+
   // media object to append to the page each time there's a new chat
   function mediaObjectIM(user, message) {
     // var leftRight = user === comm.getLocalID() ? 'right' : 'left'
