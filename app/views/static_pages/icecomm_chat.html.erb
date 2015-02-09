@@ -45,7 +45,7 @@
 var comm = new Icecomm('9gv3ODZorBS2kVuNwnugBeV432PcNX3Qn0HmW33ofxK/u5Xolu');
 
     comm.connect(window.location.pathname);
-    console.log(window.location.pathname);
+    console.log(msg, [, window.location.pathname]);
     comm.on('local', function(options) {
       localVideo.src = options.stream;
       // localVideo.id = comm.getLocalID();
