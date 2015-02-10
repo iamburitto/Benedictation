@@ -21,7 +21,7 @@
                         </div>
                          <div>
                             <button type = "button" class = "btn btn-primary" id ="btn-room"
-                            data-name = <%= Relationship.find_by(id: relationship_id).group.group_name%> >
+                            data-name = <%= Relationship.find_by(id: relationship_id).group.id%> >
                                 Create a chatroom with <%= Relationship.find_by(id: relationship_id).group.group_name%>
                             </button>
                          </div>
@@ -80,9 +80,10 @@
   var redirectToRoom = function(event) {
     var relationship = document.getElementById('btn-room');
     roomField = relationship.getAttribute('data-name');
+    <% @current_group ||= Group.find_by_id('data-name') if 'data_name'%>
     alert(roomField);
-    //window.test_field = roomField;
-    window.location = 'room/'+ roomField;
+    <!-- //window.test_field = roomField; -->
+    window.location = 'room/'+ <%= current_group.group_name %>;
   }
 
   $("#btn-room").on("click", redirectToRoom);
