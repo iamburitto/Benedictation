@@ -59,8 +59,10 @@ window.onload = function() {
                     
                     // start recording after we hear "benedict"
                     var hypArray = newHyp.split(' ');
+
                     if(hypArray[hypArray.length - 1] == "BENEDICT" && recordSpeech.recording != 1)
                     {   
+                        console.log(hypArray);
                         stopRecording(); // stop listening for benedict
                         recordSpeech(); // record speech with other recorder
                     }
