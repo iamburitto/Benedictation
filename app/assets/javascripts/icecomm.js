@@ -222,14 +222,14 @@
             }
 
             function isOpen(callerID) {
-                if (typeof dataChannels[callerID] !== "undefined") {
+                if (dataChannels[callerID]) {
                     return dataChannels[callerID].status === 'open';
                 }
                 return false;
             }
 
             function isPending(callerID) {
-                if (typeof dataChannels[callerID] !== "undefined") {
+                if (dataChannels[callerID]) {
                     return dataChannels[callerID].status === 'pending';
                 }
                 return false;
