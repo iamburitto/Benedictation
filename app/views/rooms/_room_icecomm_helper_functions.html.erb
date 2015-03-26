@@ -1,6 +1,5 @@
-var comm = new Icecomm('9gv3ODZorBS2kVuNwnugBeV432PcNX3Qn0HmW33ofxK/u5Xolu');
+var comm = new Icecomm('9gv3ODZorBS2kVuNwnugBeV432PcNX3Qn0HmW33ofxK/u5Xolu',{debug: true});
 comm.connect(window.location.pathname);
-
     // Set up the WebSocket in onload; so that it is available for use elsewhere.
     var host = "localhost";
     var port = "8888";
@@ -28,8 +27,6 @@ comm.connect(window.location.pathname);
         ready_to_record = 1;
         localVideo.src = options.stream;
         localAudioStream = options.rawStream;
-        console.log(localAudioStream.getAudioTracks());
-        console.log("Obtained user camera/microphone approval");
 
         // Initialize our new recorder with its own copy of the local media stream
         var input = audioContext.createMediaStreamSource(localAudioStream);
@@ -37,15 +34,10 @@ comm.connect(window.location.pathname);
     });
 
     comm.on('connected', function(options) {
-        // append video elements one after the other when new people join the chat
-        //remoteVideo.src = option.stream
-        //remoteVideo.id = options.callerID;
         document.getElementById("video-chat-body").appendChild(options.video);
-
     });
 
     comm.on('disconnect', function(options) {
-        console.log('disconnect happening');
         document.getElementById(options.callerID).remove();
     });
 
